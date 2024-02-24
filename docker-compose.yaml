@@ -1,0 +1,13 @@
+  version: '3'
+services:
+  shard-server:
+    image: mongo:latest
+    container_name: shard-server
+    command: mongod --shardsvr --replSet rs0 --bind_ip_all --port 27018
+    ports:
+      - "27018:27018"
+    volumes:
+      - shard-serverdb:/data/db
+
+volumes:
+  shard-serverdb:
